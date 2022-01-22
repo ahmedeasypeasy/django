@@ -1,0 +1,54 @@
+{% templatetag openblock %} extends "dist/webapp/index.html" {% templatetag closeblock %}
+{% templatetag openblock %} load i18n {% templatetag closeblock %}
+{% templatetag openblock %} load static {% templatetag closeblock %}
+
+
+{% templatetag openblock %} block body {% templatetag closeblock %}
+    <div class="container">
+      <div class="header">
+        {% templatetag openblock %} block navbar {% templatetag closeblock %}
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">About</a></li>
+          {% templatetag openblock %} if user.is_authenticated {% templatetag closeblock %}
+              <li><a href="/account/logout">Sign Out</a></li>
+          {% templatetag openblock %} else {% templatetag closeblock %}
+              <li><a href="/account/login">Sign In</a></li>
+          {% templatetag openblock %} endif {% templatetag closeblock %}
+        </ul>
+        <h3 class="text-muted">{{ project_name }}</h3>
+        {% templatetag openblock %} endblock {% templatetag closeblock %}
+      </div>
+
+    {% templatetag openblock %} block messages {% templatetag closeblock %}
+      {% templatetag openblock %} if messages {% templatetag closeblock %}
+        {% templatetag openblock %} for message in messages {% templatetag closeblock %}
+          <div class="alert alert-{% templatetag openvariable %} message.tags {% templatetag closevariable %}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {% templatetag openvariable %} message|safe {% templatetag closevariable %}
+          </div>
+        {% templatetag openblock %} endfor {% templatetag closeblock %}
+      {% templatetag openblock %} endif {% templatetag closeblock %}
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+
+    {% templatetag openblock %} block content {% templatetag closeblock %}
+      <div class="jumbotron">
+        <h1>'Allo, 'Allo!</h1>
+        <p class="lead">Always a pleasure scaffolding your apps.</p>
+        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+           <p>Template generated with <a href="https://github.com/dkarchmer/django-aws-template">django-aws-template</a><p>
+        </div>
+      </div>
+    {% templatetag openblock %} endblock {% templatetag closeblock %}
+
+      <div class="footer">
+        <p>♥ django_aws_template </p>
+      </div>
+    </div>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+
